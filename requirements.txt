@@ -1,11 +1,7 @@
-Python version during the project  3.11.4 
-
-Python modules:
-
-- pywin32
-- pynput
-- scipy
-- cryptography
-- requests
-- pillow
-- sounddevice
+pywin32==306
+pynput==1.7.6
+scipy==1.12.0
+cryptography==42.0.5
+requests==2.31.0
+pillow==10.2.0
+sounddevice==0.4.6
