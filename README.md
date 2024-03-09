@@ -33,7 +33,7 @@ toaddr = recipient_email
 ## Additional Parameters:
 Check the script for additional parameters, such as file_path, extend, and keys_information. Adjust these parameters based on your requirements.
 
-#TO DO
+# TO DO
 - Add Clipboard Logging
 - Screenshot capability
 - Audio collection
