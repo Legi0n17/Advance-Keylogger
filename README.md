@@ -30,5 +30,5 @@ fromaddr = email_address
 password = email_password
 toaddr = recipient_email
 ```
-# Additional Parameters:
+## Additional Parameters:
 Check the script for additional parameters, such as file_path, extend, and keys_information. Adjust these parameters based on your requirements.
