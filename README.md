@@ -5,7 +5,7 @@
  KEYLOGGER is ONLY intended to be used on your pen testing labs, or with explicit consent from the owner of the property being tested.** 
 
 # Overview
-**Welcome to the Advanced Keylogger and System Information Gathering Tool repository! This project is designed to showcase advanced cybersecurity skills and features a powerful keylogging capacity alongside system information-gathering capabilities. 
+**Welcome to the Advanced Keylogger and System Information Gathering Tool repository! This project is designed to showcase advanced keylogging capacity alongside system information-gathering capabilities. 
 The tool is equipped to gather essential data from the target system and discreetly send it via email for further analysis.**
 
 # Usage
